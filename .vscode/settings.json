@@ -1,0 +1,9 @@
+{
+    "files.associations": {
+        "DrawDecayTime.C": "cpp",
+        "MyMain_decay_20200522.C": "cpp",
+        "MyMain_decay.C": "cpp",
+        "iostream": "cpp",
+        "ostream": "cpp"
+    }
+}
