@@ -32,6 +32,28 @@ void CoutTheFitFuncResults(TF1 * func_fp)
     // func_fp->Gets
 }
 
+void CoutTheFitFuncResultstoFile(TF1 * func_fp, ofstream & outFile)
+{
+    Int_t myGetNpar = func_fp->GetNpar();
+    Int_t myGetNDF = func_fp->GetNDF();
+    Double_t myGetChiSquare = func_fp->GetChisquare();
+    const Double_t *myGetParameters = func_fp->GetParameters();
+    const Double_t *myGetParErrors = func_fp->GetParErrors();
+    
+    outFile << endl;
+    for(int i = 0; i < myGetNpar; i ++)
+    {
+        outFile << *(myGetParameters+i) << "    " ;
+    }
+    outFile << endl;
+    outFile << 0 << "    " << 0 << "    " ;//chi2 和 NDF的误差
+    for(int i = 0; i < myGetNpar; i ++)
+    {
+        outFile << *(myGetParErrors+i) << "    ";
+    }
+    outFile << endl;
+}
+
 void CoutTheTranslate_wtoN(TF1 * myfunc)
 {        
     Double_t N = myfunc->GetParameter(0);
@@ -53,5 +75,9 @@ void CoutTheTranslate_wtoN(TF1 * myfunc)
     cout << "N_B  = " << N_B << endl; 
 
 }
+
+
+
+
 
 #endif
