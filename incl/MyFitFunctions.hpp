@@ -255,17 +255,17 @@ Double_t MyFunc_2ExpoConv1Expo_2Expo_delta_1Gaus_p9(Double_t * x, Double_t *par)
     Double_t tauB = par[3];
     Double_t mean = par[4];
     Double_t sigma = par[5];
-    Double_t w1= sin(par[6]/TMath::Pi()*180)*sin(par[6]/TMath::Pi()*180);
-    Double_t w = sin(par[7]/TMath::Pi()*180)*sin(par[7]/TMath::Pi()*180);
+    Double_t w1= sin(par[6]*TMath::Pi()/180)*sin(par[6]*TMath::Pi()/180);
+    Double_t w = sin(par[7]*TMath::Pi()/180)*sin(par[7]*TMath::Pi()/180);
     // Double_t w1= par[6];
     // Double_t w = par[7];
     Double_t N_delta = par[8];
 
-    if(tauA1-tauB == 0.0 )
+    if( abs(tauA1-tauB) < 1e-18 )
     {
         tauB = tauA1+1e-18;
     }    
-    if(tauA2-tauB == 0.0 )
+    if(abs(tauA2-tauB) < 1e-18 )
     {
         tauB = tauA2+1e-18;
     }
@@ -318,17 +318,15 @@ Double_t MyFunc_2ExpoConv1Expo_2Expo_delta_1Gaus_p9_value(Double_t * x, Double_t
     Double_t tauB = par[3];
     Double_t mean = par[4];
     Double_t sigma = par[5];
-    // Double_t w1= sin(par[6]/TMath::Pi()*180)*sin(par[6]/TMath::Pi()*180);
-    // Double_t w = sin(par[7]/TMath::Pi()*180)*sin(par[7]/TMath::Pi()*180);
     Double_t w1= par[6];
     Double_t w = par[7];
     Double_t N_delta = par[8];
 
-    if(tauA1-tauB == 0.0 )
+    if(abs(tauA1-tauB) < 1e-18 )
     {
         tauB = tauA1+1e-18;
     }    
-    if(tauA2-tauB == 0.0 )
+    if(abs(tauA2-tauB) < 1e-18)
     {
         tauB = tauA2+1e-18;
     }
@@ -366,11 +364,6 @@ Double_t MyModFunc_2ExpoConv1Expo_2Expo_delta_1Gaus_p10_value(Double_t * x, Doub
     return f;
 }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-
-
-
 
 
 
